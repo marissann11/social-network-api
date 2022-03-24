@@ -22,7 +22,7 @@ const UserSchema = new Schema(
     ],
     friends: [
       {
-        // Is this correct?
+        // Is this correct for a self reference?
         type: Schema.Types.ObjectId,
         ref: 'User',
       },
