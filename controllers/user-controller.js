@@ -11,6 +11,7 @@ const userController = {
       res.status(400).json(err);
     }
   },
+
   // get one user by id
   async getUserById({ params }, res) {
     try {
@@ -21,6 +22,7 @@ const userController = {
       res.status(400).json(err);
     }
   },
+
   // create new user
   async createUser({ body }, res) {
     try {
@@ -31,6 +33,7 @@ const userController = {
       res.status(400).json(err);
     }
   },
+
   // update user by id
   async updateUser({ params, body }, res) {
     try {
@@ -43,10 +46,11 @@ const userController = {
       res.status(400).json(err);
     }
   },
+
   // delete user
   async deleteUser({ params }, res) {
     try {
-      const dbUserData = await User.findOneAndDelete({ _id: params.is });
+      const dbUserData = await User.findOneAndDelete({ _id: params.id });
       res.json(dbUserData);
     } catch (err) {
       console.log(err);
