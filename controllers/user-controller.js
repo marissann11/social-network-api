@@ -4,7 +4,11 @@ const userController = {
   // get all users
   async getAllUser(req, res) {
     try {
-      const dbUserData = await User.find({});
+      const dbUserData = await User.find({})
+        .populate({ path: 'thoughts', select: '-__v' })
+        .populate({ path: 'friends', select: '-__v' })
+        .select('-__v');
+
       res.json(dbUserData);
     } catch (err) {
       console.log(err);
@@ -15,7 +19,11 @@ const userController = {
   // get one user by id
   async getUserById({ params }, res) {
     try {
-      const dbUserData = await User.findOne({ _id: params.id });
+      const dbUserData = await User.findOne({ _id: params.id })
+        .populate({ path: 'thoughts', select: '-__v' })
+        .populate({ path: 'friends', select: '-__v' })
+        .select('-__v');
+
       res.json(dbUserData);
     } catch (err) {
       console.log(err);
