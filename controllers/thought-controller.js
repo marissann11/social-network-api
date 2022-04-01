@@ -28,8 +28,8 @@ const thoughtController = {
     try {
       const dbThoughtData = await Thought.create(body);
       await User.findOneAndUpdate(
-        { _id: params.id },
-        { $push: { thoughts: _id } },
+        { _id: params.userId },
+        { $push: { thoughts: dbThoughtData._id } },
         { new: true }
       );
       res.json(dbThoughtData);
